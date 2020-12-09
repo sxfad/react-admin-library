@@ -1,0 +1,16 @@
+.antdPrefixCls(@code) {
+    @prefixClasses: ant, portal;
+    & {
+        .loop(@i:1) when (@i =< length(@prefixClasses)) {
+            @prefixCls: extract(@prefixClasses, @i);
+
+            @code();
+
+            .loop(@i + 1);
+        }
+
+        :global {
+            .loop();
+        }
+    }
+}

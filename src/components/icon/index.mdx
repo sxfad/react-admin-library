@@ -1,0 +1,23 @@
+---
+menu: Component
+name: 图标
+route: /component/icon
+---
+import { Playground, Props } from 'docz';
+import { AppstoreOutlined } from '@ant-design/icons';
+import Icon from './index';
+
+
+## 图标
+
+### 属性
+<Props of={Icon}/>
+
+### 基础用法
+<Playground>
+    <div>直接使用@ant-design/icons 组件名作为type</div>
+    <Icon type="AppstoreOutlined" style={{ color: 'red' }}/>
+
+    <div>antd3.x type 兼容处理</div>
+    <Icon type="appstore"/>
+</Playground>

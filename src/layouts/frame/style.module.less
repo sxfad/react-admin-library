@@ -1,0 +1,163 @@
+@headerHeight: 50px;
+@sideWidth: 256px;
+@footerHeight: 40px;
+@contentTop: @headerHeight;
+@contentLeft: @sideWidth;
+@contentBottom: @footerHeight;
+@borderColor: #d9d9d9;
+@transitionDuration: 300ms;
+@pageHeadHeight: 45px;
+@pageTabsHeight: 35px;
+
+body {
+    transition: padding-left @transitionDuration;
+}
+
+.baseFrame {
+    flex: 0;
+}
+
+.header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: @headerHeight;
+    line-height: @headerHeight;
+    padding-right: 16px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+
+    .right {
+        float: right;
+        height: 100%;
+    }
+}
+
+.logo {
+    float: left;
+    display: inline-block;
+    height: @headerHeight;
+    line-height: @headerHeight;
+    position: relative;
+    //transition: all @transitionDuration;
+    background: #002140;
+    overflow: hidden;
+
+    h1 {
+        color: #fff;
+    }
+}
+
+.trigger {
+    float: left;
+    font-size: 20px;
+    line-height: @headerHeight;
+    cursor: pointer;
+    transition: all .3s;
+    padding: 0 24px;
+
+    &:hover {
+        background: #e6f7ff;
+    }
+}
+
+.side {
+    position: fixed;
+    z-index: 999;
+    top: @headerHeight;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    background: #001529;
+    transition: all @transitionDuration;
+
+    .outer {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        overflow: hidden;
+        transition: all @transitionDuration;
+    }
+
+    .inner {
+        position: relative;
+        height: 100%;
+        overflow-x: visible;
+        overflow-y: scroll;
+        transition: all @transitionDuration;
+    }
+
+    :global(.react-draggable) {
+        transition: all @transitionDuration;
+    }
+}
+
+.contentTopSpace {
+    position: relative;
+    height: @contentTop;
+    background: #f0f2f5;
+    //transition: all @transitionDuration;
+
+    &.withFixedPageHead {
+        height: @contentTop + @pageHeadHeight;
+    }
+
+    &.withTabs {
+        height: @contentTop + @pageTabsHeight;
+    }
+
+    &.withFixedPageHead.withTabs {
+        height: @contentTop + @pageHeadHeight + @pageTabsHeight;
+    }
+}
+
+.headFixed {
+    position: fixed;
+    right: 0;
+    top: @contentTop;
+    background: #fff;
+    z-index: 998;
+
+    &.withTabs {
+        top: @contentTop + @pageTabsHeight;
+    }
+}
+
+.pageTabs {
+    position: fixed;
+    right: 0;
+    top: @contentTop;
+    height: @pageTabsHeight;
+    background: #fff;
+    z-index: 998;
+    padding-right: 16px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    height: @footerHeight;
+    line-height: @footerHeight;
+    text-align: center;
+}
+
+.globalLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 99999;
+    cursor: not-allowed;
+    text-align: center;
+}

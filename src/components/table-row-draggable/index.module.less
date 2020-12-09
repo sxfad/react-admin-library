@@ -1,0 +1,26 @@
+@import '../../ant-prefix-cls.less';
+
+.sxTableRowDraggable tbody > tr {
+    cursor: move;
+}
+
+.antdPrefixCls({
+    .helper-element {
+        display: table-row;
+    }
+
+    .helper-element td {
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0;
+        padding: 8px;
+        display: table-cell;
+        vertical-align: center;
+        background: #fff;
+        width: 10000px;
+        border-collapse: collapse;
+    }
+
+    .helper-element .@{prefixCls}-form-item {
+        margin-bottom: 0;
+    }
+});

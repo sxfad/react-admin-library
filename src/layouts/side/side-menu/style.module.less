@@ -1,0 +1,42 @@
+@import '../../../ant-prefix-cls.less';
+
+.antdPrefixCls({
+    .@{prefixCls}-tooltip-inner .font-icon {
+        margin-right: 8px;
+    }
+});
+
+.sideMenu {
+    height: 100%;
+    padding-right: 1px;
+
+    & > ul {
+        height: 100%;
+    }
+
+    .antdPrefixCls({
+        .font-icon {
+            margin-right: 8px;
+        }
+
+        .@{prefixCls}-menu {
+            border-right: 0;
+        }
+
+        .@{prefixCls}-menu-item::after {
+            display: none;
+        }
+
+        .@{prefixCls}-menu-item.@{prefixCls}-menu-item-selected {
+            &::after {
+                display: block;
+                left: 0;
+                right: auto;
+            }
+        }
+    });
+
+    .menuText {
+        transition: all 300ms;
+    }
+}

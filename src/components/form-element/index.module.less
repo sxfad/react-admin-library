@@ -1,0 +1,80 @@
+@import '../../ant-prefix-cls.less';
+
+.formElementFlexRoot {
+    box-sizing: border-box;
+    align-items: center;
+
+    .fontElementTip {
+        align-self: flex-start;
+        margin-top: 6px;
+        margin-left: 6px;
+        color: #888;
+    }
+
+    .antdPrefixCls({
+        .@{prefixCls}-form-item {
+            display: flex;
+            flex: 1;
+            margin-bottom: 18px;
+            font-size: 12px;
+
+            .@{prefixCls}-form-item-label {
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .@{prefixCls}-form-item-control {
+                flex: 1;
+            }
+
+            .@{prefixCls}-form-item-explain {
+                position: absolute;
+                bottom: -22px;
+            }
+
+            .@{prefixCls}-form-item-required.@{prefixCls}-form-item-no-colon[title=" "]::after {
+                display: none;
+            }
+
+            .@{prefixCls}-form-item-control-input-content {
+                display: flex;
+            }
+        }
+
+        .@{prefixCls}-transfer {
+            display: flex;
+            align-items: center;
+
+            .@{prefixCls}-transfer-list {
+                flex: 1;
+            }
+        }
+    });
+}
+
+@media (max-width: 575px) {
+
+    .formElementFlexRoot {
+        flex: 0 0 100% !important;
+        padding-right: 10px;
+
+        .antdPrefixCls({
+            .@{prefixCls}-form-item-label {
+                text-align: right;
+            }
+
+            .@{prefixCls}-form-item-label label:after {
+                display: block;
+                content: '：'
+            }
+
+            .@{prefixCls}-form-item-label label.@{prefixCls}-form-item-no-colon:after {
+                display: none;
+            }
+
+            .frame-label-without-width .@{prefixCls}-form-item-label {
+                flex-basis: auto !important;
+            }
+        });
+    }
+}

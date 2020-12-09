@@ -1,0 +1,36 @@
+@import '../../../ant-prefix-cls';
+
+@headerHeight: 50px;
+@active-background-color: rgba(0, 0, 0, 0.15);
+
+.headerMenu {
+    display: block;
+    height: 100%;
+
+    .antdPrefixCls({
+        .@{prefixCls}-menu {
+            border-color: transparent;
+        }
+
+        .@{prefixCls}-menu > li {
+            padding: 0 16px !important;
+            margin: 0 0 !important;
+            color: #fff;
+
+            & > .@{prefixCls}-menu-submenu-title,
+            & > a {
+                color: #fff;
+            }
+        }
+        .@{prefixCls}-menu > li.@{prefixCls}-menu-item-selected,
+        .@{prefixCls}-menu > li.@{prefixCls}-menu-submenu-selected,
+        .@{prefixCls}-menu > li:hover {
+            background: @active-background-color;
+            color: #fff;
+
+            a {
+                color: #fff;
+            }
+        }
+    });
+}

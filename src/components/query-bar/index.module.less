@@ -1,0 +1,37 @@
+@import '../../ant-prefix-cls.less';
+
+/* 查询条件 */
+.sxQueryBar {
+    position: relative;
+    margin-bottom: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    background: #fff;
+    border-bottom: 8px solid #f0f2f5;
+
+    &.withCollapse {
+        padding-right: 55px;
+    }
+
+    .sxQueryBarCollapsed {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 3px 8px 0 0;
+        font-size: 14px;
+
+        i {
+            margin-left: 3px;
+        }
+    }
+
+
+    .antdPrefixCls({
+        .@{prefixCls}-form-item {
+            margin-bottom: 8px;
+        }
+    })
+}
+
+
+

@@ -1,0 +1,13 @@
+.tool-bar-root {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.tool-bar-root > * {
+    margin-right: 8px;
+}
+
+.tool-bar-root > *:last-child {
+    margin-right: 0;
+}

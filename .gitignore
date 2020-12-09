@@ -1,0 +1,11 @@
+.docz
+node_modules
+
+# ide config
+.idea
+
+/dist
+
+# dependencies
+/*.tgz
+yarn-error.log
