@@ -172,7 +172,7 @@ export default class PageTabs extends Component {
         if (action === 'closeLeft') {
             const targetIndex = tabs.findIndex(item => item.path === targetPath);
             const targetTab = tabs[targetIndex];
-            const nextTabs = tabs.filter((item, index) => index > targetIndex);
+            const nextTabs = tabs.filter((item, index) => index >= targetIndex);
 
             if (!nextTabs.some(item => item.active)) {
                 targetTab.active = true;
@@ -184,7 +184,7 @@ export default class PageTabs extends Component {
         if (action === 'closeRight') {
             const targetIndex = tabs.findIndex(item => item.path === targetPath);
             const targetTab = tabs[targetIndex];
-            const nextTabs = tabs.filter((item, index) => index < targetIndex);
+            const nextTabs = tabs.filter((item, index) => index <= targetIndex);
 
             if (!nextTabs.some(item => item.active)) {
                 targetTab.active = true;

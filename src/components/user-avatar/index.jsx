@@ -41,7 +41,7 @@ export default class UserAvatar extends Component {
 
         return (
             <Avatar{...others}>
-                {nameFirstChar}
+                <span style={{ fontSize: 14, fontWeight: 'bold' }}>{nameFirstChar.toUpperCase()}</span>
             </Avatar>
         );
     }
