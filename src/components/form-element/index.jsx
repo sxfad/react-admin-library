@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'antd';
-import 'antd/lib/form/style/index.less';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import {
     InputNumber,
@@ -17,17 +16,6 @@ import {
     Tooltip,
     Transfer,
 } from 'antd';
-import 'antd/lib/input/style/index.less';
-import 'antd/lib/input-number/style/index.less';
-import 'antd/lib/select/style/index.less';
-import 'antd/lib/tree-select/style/index.less';
-import 'antd/lib/checkbox/style/index.less';
-import 'antd/lib/radio/style/index.less';
-import 'antd/lib/switch/style/index.less';
-import 'antd/lib/date-picker/style/index.less';
-import 'antd/lib/cascader/style/index.less';
-import 'antd/lib/tooltip/style/index.less';
-import 'antd/lib/transfer/style/index.less';
 import IconPicker from '../icon-picker';
 import styles from './index.module.less';
 

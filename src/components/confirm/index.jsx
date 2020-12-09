@@ -1,10 +1,14 @@
 import React from 'react';
 import { Modal } from 'antd';
-import 'antd/lib/modal/style/index.less';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
+/**
+ * confirm 封装
+ * @param title 标题
+ * @param content 内容
+ * @returns {Promise<unknown>}
+ */
 export default async ({ title, content }) => {
-
     return new Promise((resolve, reject) => {
         Modal.confirm({
             icon: <QuestionCircleOutlined/>,

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import { Row, Col, Button, Input } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/input/style/index.less';
 import modal from '../../hoc/modal-hoc';
 import ModalContent from '../../hoc/modal-hoc/ModalContent';
 
@@ -35,8 +33,7 @@ const icons = [
     },
 ];
 
-@modal('图标')
-export default class IconPicker extends Component {
+class IconPicker extends Component {
     static propTypes = {
         visible: PropTypes.bool,
         title: PropTypes.any,
@@ -128,3 +125,5 @@ export default class IconPicker extends Component {
         );
     }
 }
+
+export default modal('图标')(IconPicker);

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, ConfigProvider } from 'antd';
-import 'antd/lib/table/style/index.less';
-import 'antd/lib/config-provider/style/index.less';
 import * as util from '../../util';
 
 export default class TableComponent extends Component {

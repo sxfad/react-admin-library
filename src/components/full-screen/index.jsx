@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
-import 'antd/lib/tooltip/style/index.less';
 
 export default class HeaderFullScreen extends Component {
     static propTypes = {
+        /** Tooltip 提示未知 */
         placement: PropTypes.any,
+        /** 需要全屏的dom元素，默认document.documentElement */
         element: PropTypes.any,
+        /** 进入全屏 Tooltip 提示 */
         toFullTip: PropTypes.any,
+        /** 退出全屏 Tooltip 提示 */
         exitFullTip: PropTypes.any,
+        /** 全屏后触发事件 */
         onFull: PropTypes.func,
+        /** 退出全屏触发事件 */
         onExit: PropTypes.func,
+        /** 是否在框架内全屏 */
         inFrame: PropTypes.bool,
 
     };

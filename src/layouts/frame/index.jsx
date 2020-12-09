@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Spin, BackTop } from 'antd';
-import 'antd/lib/spin/style/index.less';
-import 'antd/lib/back-top/style/index.less';
 
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet';

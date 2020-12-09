@@ -1,6 +1,5 @@
 import React, { useContext, Component } from 'react';
 import { Form } from 'antd';
-import 'antd/lib/form/style/index.less';
 import FormElement from '../form-element';
 import { v4 as uuid } from 'uuid';
 import styles from './style.module.less';

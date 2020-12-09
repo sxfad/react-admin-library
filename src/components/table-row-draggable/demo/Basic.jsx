@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table } from 'antd';
-import 'antd/lib/table/style/index.less';
 import { rowDraggable } from '../../../index';
 
 const TableRowDraggable = rowDraggable(Table);

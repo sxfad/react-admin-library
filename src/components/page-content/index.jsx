@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Spin } from 'antd';
-import 'antd/lib/spin/style/index.less';
 import PropTypes from 'prop-types';
 import Footer from '../footer';
 import { getElementTop } from '../../util';

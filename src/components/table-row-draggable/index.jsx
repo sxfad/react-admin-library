@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ConfigProvider } from 'antd';
-import 'antd/lib/config-provider/style/index.less';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';

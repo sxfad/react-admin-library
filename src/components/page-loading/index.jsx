@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Spin } from 'antd';
-import 'antd/lib/spin/style/index.less';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 

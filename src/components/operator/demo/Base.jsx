@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table } from 'antd';
-import 'antd/lib/table/style/index.less';
 import { v4 as uuid } from 'uuid';
 import { Operator } from '../../../index';
 

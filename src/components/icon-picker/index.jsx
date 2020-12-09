@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Icon from '../icon';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import Icon from '../icon';
 import IconModal from './IconModal';
 
 export default class IconPicker extends Component {

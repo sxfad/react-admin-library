@@ -8,7 +8,6 @@ import {
 } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
-import 'antd/lib/menu/style/index.less';
 import queryString from 'qs';
 import Icon from '../../components/icon';
 import DraggableTabsBar from '../../components/draggable-tabs-bar';

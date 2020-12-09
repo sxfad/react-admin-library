@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
-import 'antd/lib/avatar/style/index.less';
 import PropTypes from 'prop-types';
 
 /**

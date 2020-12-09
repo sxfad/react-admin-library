@@ -1,10 +1,5 @@
 import React from 'react';
 import { Button, Card, Checkbox, Radio, Alert } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/checkbox/style/index.less';
-import 'antd/lib/radio/style/index.less';
-import 'antd/lib/alert/style/index.less';
 import model from '../../hoc/modal-hoc';
 import ModalContent from '../../hoc/modal-hoc/ModalContent';
 import { PAGE_FRAME_LAYOUT } from '../../layouts/model';

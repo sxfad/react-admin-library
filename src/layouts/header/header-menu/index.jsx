@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Icon from '../../../components/icon';
 import { Menu } from 'antd';
-import 'antd/lib/menu/style/index.less';
 import * as tree from '../../../util/tree';
 import styles from './style.module.less';
 

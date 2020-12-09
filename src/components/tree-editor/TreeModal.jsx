@@ -1,10 +1,5 @@
 import React from 'react';
 import { Input, Tree, Empty, Button, Popconfirm } from 'antd';
-import 'antd/lib/input/style/index.less';
-import 'antd/lib/tree/style/index.less';
-import 'antd/lib/empty/style/index.less';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/popconfirm/style/index.less';
 import { EditOutlined, DeleteOutlined, PlusOutlined, SaveOutlined } from '@ant-design/icons';
 import model from '../../hoc/modal-hoc';
 import ModalContent from '../../hoc/modal-hoc/ModalContent';

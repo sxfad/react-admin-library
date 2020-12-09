@@ -48,7 +48,7 @@ function Icon(props) {
 }
 
 Icon.propTypes = {
-    /** 注释啥的 */
+    /** @ant-design/icons AppstoreOutlined  antd3.x appstore */
     type: PropTypes.string.isRequired,
     style: PropTypes.object,
     className: PropTypes.string,

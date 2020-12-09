@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import { DownOutlined, LoadingOutlined } from '@ant-design/icons';
 import Icon from '../icon';
 import { Popconfirm, Dropdown, Menu, Tooltip } from 'antd';
-import 'antd/lib/popover/style/index.less'; // popconfirm 需要 popover样式
-import 'antd/lib/popconfirm/style/index.less';
-import 'antd/lib/dropdown/style/index.less';
-import 'antd/lib/menu/style/index.less';
-import 'antd/lib/tooltip/style/index.less';
 import './index.css';
 
 /**

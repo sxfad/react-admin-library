@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Spin, ConfigProvider } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/spin/style/index.less';
-import 'antd/lib/config-provider/style/index.less';
 import PropTypes from 'prop-types';
 import * as util from '../../util';
 

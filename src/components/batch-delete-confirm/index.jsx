@@ -1,8 +1,12 @@
 import React from 'react';
 import { Modal } from 'antd';
-import 'antd/lib/modal/style/index.less';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
+/**
+ * 批量删除提示
+ * @param count 需要删除的记录个数
+ * @returns {Promise<unknown>}
+ */
 export default function batchDeleteConfirm(count) {
     const content = (
         <div>

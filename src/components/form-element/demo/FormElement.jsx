@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 import { Button } from 'antd';
-import 'antd/lib/button/style/index.less';
 import { FormElement } from '../../../index';
 
 @Form.create()

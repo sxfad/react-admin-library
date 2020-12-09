@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Icon from '../../components/icon';
 import { Breadcrumb } from 'antd';
-import 'antd/lib/breadcrumb/style/index.less';
 import styles from './style.module.less';
 
 const Item = Breadcrumb.Item;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Modal } from 'antd';
-import 'antd/lib/modal/style/index.less';
 
 /**
  *  modal高级组件，确保每次弹框内部组件都是新创建的
