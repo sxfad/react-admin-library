@@ -11,7 +11,7 @@ import { Menu } from 'antd';
 import queryString from 'qs';
 import Icon from '../../components/icon';
 import DraggableTabsBar from '../../components/draggable-tabs-bar';
-import ContextMenu from '../../components/context-menu';
+import ContextMenu from './ContextMenu';
 import styles from './style.module.less';
 
 let UN_LISTEN;

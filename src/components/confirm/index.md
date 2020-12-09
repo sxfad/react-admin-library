@@ -1,4 +1,4 @@
-# 删除提示
+# 确认框
 
 ```jsx
 /**
@@ -8,11 +8,14 @@ desc: 配合 async await 使用
 import React from 'react';
 import {Button} from 'antd';
 
-import {batchDeleteConfirm} from 'ra-lib';
+import {confirm} from 'ra-lib';
 
 export default () => {
     async function handleDelete(){
-        await batchDeleteConfirm(8);
+        await confirm({
+            title: '温馨提示',
+            content: '您确定吗？'
+        });
     
         alert('用户确定了！')
     }

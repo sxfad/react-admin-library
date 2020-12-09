@@ -28,6 +28,7 @@ const Copy = props => {
 };
 
 Copy.propTypes = {
+    /** 要复制的内容 */
     text: PropTypes.string,
 };
 

@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 export default class ContextMenu extends Component {
     static propTypes = {
         content: PropTypes.any,     // 右键内容
+        event: PropTypes.object,    // 右键事件
+        visible: PropTypes.bool,    // 显示隐藏菜单
     };
 
     state = {
         left: 0,
         top: 0,
         contentResult: '',
-        visible: false,
-        event: null,
     };
 
     componentDidMount() {
@@ -25,13 +25,14 @@ export default class ContextMenu extends Component {
     }
 
     hideRightContent = () => {
-        this.setState({ visible: false });
+        const { onChange } = this.props;
+        if (onChange) onChange(false);
     };
 
     setContentPosition = () => {
         if (!this.container) return;
 
-        const { event } = this.state;
+        const { event } = this.props;
 
         if (!event) return;
 
@@ -55,15 +56,9 @@ export default class ContextMenu extends Component {
         this.container.style.top = `${top}px`;
     };
 
-    handleContextMenu = (e) => {
-        e.persist();
-        e.preventDefault();
-        this.setState({ visible: true, event: e });
-    };
-
     render() {
-        let { content, children } = this.props;
-        const { left, top, visible } = this.state;
+        const { content, visible } = this.props;
+        const { left, top } = this.state;
 
         if (visible) {
             // 内容未加载完成时，先进行一次大致定位
@@ -73,35 +68,30 @@ export default class ContextMenu extends Component {
             setTimeout(this.setContentPosition);
         }
 
-        children = children ? React.cloneElement(children, { onContextMenu: this.handleContextMenu }) : null;
-
         return (
-            <>
+            <div
+                style={{
+                    display: visible ? 'block' : 'none',
+                    position: 'fixed',
+                    left: 0,
+                    top: 0,
+                    zIndex: 99999,
+                    width: 0,
+                    height: 0,
+                }}
+            >
                 <div
+                    ref={node => this.container = node}
                     style={{
-                        display: visible ? 'block' : 'none',
-                        position: 'fixed',
-                        left: 0,
-                        top: 0,
-                        zIndex: 99999,
-                        width: 0,
-                        height: 0,
+                        left,
+                        top,
+                        position: 'absolute',
+                        boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
                     }}
                 >
-                    <div
-                        ref={node => this.container = node}
-                        style={{
-                            left,
-                            top,
-                            position: 'absolute',
-                            boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
-                        }}
-                    >
-                        {content}
-                    </div>
+                    {content}
                 </div>
-                {children}
-            </>
+            </div>
         );
     }
 }

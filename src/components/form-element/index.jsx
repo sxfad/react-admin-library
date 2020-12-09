@@ -142,7 +142,7 @@ class FormElement extends Component {
             'date-range',
             'cascader',
             'transfer',
-            'icon-picker'
+            'icon-picker',
         ]).isRequired,
         labelWidth: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
         showLabel: PropTypes.bool,

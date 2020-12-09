@@ -5,6 +5,7 @@ import styles from './style.module.less';
 export default class FixBottom extends Component {
     static __FIX_BOTTOM = true;
     static propTypes = {
+        /** 内部内容是否居右显示，默认true */
         right: PropTypes.bool,  // 内部内容是否居又显示
     };
 

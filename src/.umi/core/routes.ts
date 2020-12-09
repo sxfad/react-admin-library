@@ -9,7 +9,7 @@ export function getRoutes() {
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('../../../node_modules/@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"*":{"*":[{"path":"/","title":"README","meta":{"order":null}},{"title":"Components","path":"/components","meta":{},"children":[{"path":"/components/async-select","title":"异步下拉","meta":{}},{"path":"/components/batch-delete-confirm","title":"删除提示","meta":{}},{"path":"/components/form-element","title":"表单元素","meta":{}},{"path":"/components/icon","title":"图标","meta":{}},{"path":"/components/operator","title":"操作","meta":{}},{"path":"/components/pagination","title":"分页组件","meta":{}},{"path":"/components/query-bar","title":"查询条","meta":{}},{"path":"/components/table-row-draggable","title":"表格行可拖拽","meta":{}},{"path":"/components/tool-bar","title":"工具条","meta":{}},{"path":"/components/user-avatar","title":"用户头像","meta":{}}]},{"title":"Layouts","path":"/layouts","meta":{},"children":[{"path":"/layouts","title":"基础框架","meta":{}}]},{"title":"Redux","path":"/redux","meta":{},"children":[{"path":"/redux","title":"redux 封装","meta":{}}]}]}},"locales":[],"navs":{},"title":"ra-lib","mode":"doc"},
+      ...{"menus":{"*":{"*":[{"path":"/","title":"README","meta":{"order":null}},{"title":"Components","path":"/components","meta":{},"children":[{"path":"/components/async-select","title":"异步下拉","meta":{}},{"path":"/components/batch-delete-confirm","title":"删除提示","meta":{}},{"path":"/components/confirm","title":"确认框","meta":{}},{"path":"/components/context-menu","title":"右键菜单","meta":{}},{"path":"/components/copy","title":"复制文本","meta":{}},{"path":"/components/form-element","title":"表单元素","meta":{}},{"path":"/components/icon","title":"图标","meta":{}},{"path":"/components/operator","title":"操作","meta":{}},{"path":"/components/pagination","title":"分页组件","meta":{}},{"path":"/components/query-bar","title":"查询条","meta":{}},{"path":"/components/table-row-draggable","title":"表格行可拖拽","meta":{}},{"path":"/components/tool-bar","title":"工具条","meta":{}},{"path":"/components/user-avatar","title":"用户头像","meta":{}}]},{"title":"Layouts","path":"/layouts","meta":{},"children":[{"path":"/layouts","title":"基础框架","meta":{}}]},{"title":"Redux","path":"/redux","meta":{},"children":[{"path":"/redux","title":"redux 封装","meta":{}}]}]}},"locales":[],"navs":{},"title":"ra-lib","mode":"doc"},
       ...props,
     }),
     "routes": [
@@ -57,7 +57,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/components/batch-delete-confirm/index.md",
-          "updatedTime": 1607505849492,
+          "updatedTime": 1607505921000,
           "slugs": [
             {
               "depth": 1,
@@ -72,6 +72,72 @@ export function getRoutes() {
           }
         },
         "title": "删除提示"
+      },
+      {
+        "path": "/components/confirm",
+        "component": require('../../components/confirm/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "src/components/confirm/index.md",
+          "updatedTime": 1607506640723,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "确认框",
+              "heading": "确认框"
+            }
+          ],
+          "title": "确认框",
+          "group": {
+            "path": "/components",
+            "title": "Components"
+          }
+        },
+        "title": "确认框"
+      },
+      {
+        "path": "/components/context-menu",
+        "component": require('../../components/context-menu/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "src/components/context-menu/index.md",
+          "updatedTime": 1607508627943,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "右键菜单",
+              "heading": "右键菜单"
+            }
+          ],
+          "title": "右键菜单",
+          "group": {
+            "path": "/components",
+            "title": "Components"
+          }
+        },
+        "title": "右键菜单"
+      },
+      {
+        "path": "/components/copy",
+        "component": require('../../components/copy/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "src/components/copy/index.md",
+          "updatedTime": 1607508619181,
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "复制文本",
+              "heading": "复制文本"
+            }
+          ],
+          "title": "复制文本",
+          "group": {
+            "path": "/components",
+            "title": "Components"
+          }
+        },
+        "title": "复制文本"
       },
       {
         "path": "/components/form-element",
@@ -106,7 +172,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "src/components/icon/index.md",
-          "updatedTime": 1607504334806,
+          "updatedTime": 1607505921000,
           "slugs": [
             {
               "depth": 1,
@@ -408,16 +474,6 @@ export function getRoutes() {
               "depth": 2,
               "value": "关于redux",
               "heading": "关于redux"
-            },
-            {
-              "depth": 3,
-              "value": "action：",
-              "heading": "action："
-            },
-            {
-              "depth": 3,
-              "value": "回调处理",
-              "heading": "回调处理"
             },
             {
               "depth": 3,
