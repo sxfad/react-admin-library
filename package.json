@@ -1,6 +1,6 @@
 {
     "name": "ra-lib",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "license": "MIT",
     "main": "./dist/index.esm.js",
     "files": [
@@ -8,6 +8,7 @@
     ],
     "scripts": {
         "build": "father build",
+        "build:cp": "yarn build && cp -r ./dist ../react-admin/node_modules/ra-lib",
         "test": "father test",
         "test:coverage": "father test --coverage",
         "dumi:dev": "dumi dev"

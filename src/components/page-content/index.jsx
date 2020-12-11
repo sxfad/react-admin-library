@@ -45,8 +45,9 @@ export default class PageContent extends Component {
         const { otherHeight } = this.props;
         const offsetTop = getElementTop(this.contentDom);
         const windowHeight = document.documentElement.clientHeight;
+        const marginBottom = window.parseInt(window.getComputedStyle(this.contentDom)?.marginBottom, 10) || 0;
 
-        const height = windowHeight - offsetTop - 8 - otherHeight;
+        const height = windowHeight - offsetTop - marginBottom - otherHeight;
         this.setState({ height });
     };
 

@@ -51,8 +51,6 @@ export default function DragRow(OriTable) {
         constructor(props) {
             super(props);
 
-            const prefixCls = this.context.getPrefixCls();
-
             const { helperClass, onSortStart, onSortEnd, components } = this.props;
 
             const handleSortStart = (...args) => {
@@ -64,6 +62,8 @@ export default function DragRow(OriTable) {
                 const tds = tr.querySelectorAll('td');
 
                 tds.forEach((item, index) => {
+                    if (!helperTds[index]) return;
+
                     helperTds[index].style.width = getCss(item, 'width');
                     helperTds[index].style.height = getCss(item, 'height');
                 });
@@ -71,6 +71,7 @@ export default function DragRow(OriTable) {
 
             const handleSortEnd = (props) => {
                 let { oldIndex, newIndex } = props;
+                const prefixCls = this.context.getPrefixCls();
                 if (this.body.container.querySelector(`.${prefixCls}-table-measure-row`)) {
                     newIndex = (newIndex - 1) < 0 ? 0 : newIndex - 1;
                     oldIndex = oldIndex - 1;

@@ -56,6 +56,56 @@ export function getMenuTreeDataAndPermissions(menus) {
     // 获取菜单，过滤掉功能码
     menus = menus.filter(item => item.type !== '2');
 
+    // 设置basePath
+    const setBasePath = (node, basePath) => {
+        if (!basePath) return;
+
+        const { path, url } = node;
+
+        if (basePath.endsWith('/')) {
+            basePath = basePath.substr(0, basePath.length - 1);
+        }
+
+        if (path && !path.startsWith(basePath)) {
+            node.path = `${basePath}${path}`;
+        }
+
+        if (
+            url
+            && !url.startsWith('http')
+            && !url.startsWith('//')
+            && !url.startsWith(basePath)
+        ) {
+            node.url = `${basePath}${url}`;
+        }
+    };
+
+    const loop = (nodes, basePath) => {
+        nodes.forEach(item => {
+            const { key } = item;
+            const children = menus.filter(it => it.parentKey === key);
+
+            setBasePath(item, basePath);
+
+            if (children?.length) {
+                loop(children, basePath);
+            }
+        });
+    };
+
+    menus.forEach(top => {
+        const { basePath, key } = top;
+        const children = menus.filter(it => it.parentKey === key);
+
+        if (!basePath) return;
+
+        setBasePath(top, basePath);
+
+        if (children?.length) {
+            loop(children, basePath);
+        }
+    });
+
     // 处理path： 只声明了url，为iframe页面
     menus = menus.map(item => {
         if (item.url) {
