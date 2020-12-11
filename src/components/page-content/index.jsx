@@ -87,9 +87,13 @@ export default class PageContent extends Component {
 
 
         return (
-            <div ref={node => this.root = node} style={rootStyle} className={styles.pageContentRoot}>
+            <div
+                ref={node => this.root = node}
+                style={rootStyle}
+                className={`${styles.pageContentRoot} sx-page-content-root`}
+            >
                 <div
-                    className={styles.pageLoading}
+                    className={`${styles.pageLoading} sx-page-content-loading`}
                     style={{
                         display: loading ? 'block' : 'none',
                     }}
