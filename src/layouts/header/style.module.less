@@ -1,7 +1,6 @@
 @import '../../ant-prefix-cls.less';
 
 @headerHeight: 50px;
-@transitionDuration: 300ms;
 @layout-header-background: #001529;
 
 .header {
@@ -26,6 +25,7 @@
         position: relative;
         height: @headerHeight;
         overflow: hidden;
+        transition: flex .3s cubic-bezier(0.2, 0, 0, 1) 0s;
 
         h1 {
             color: #fff;
@@ -77,27 +77,6 @@
         align-items: stretch;
         flex: 0;
         height: 100%;
-
-        .action {
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 0 6px;
-            transition: all @transitionDuration;
-            height: 100%;
-            color: #fff;
-
-            &:hover {
-                opacity: .7;
-            }
-
-            i {
-                font-size: 16px;
-                vertical-align: middle;
-                margin-right: 5px;
-            }
-        }
-
     }
 
     &[data-theme=dark] {

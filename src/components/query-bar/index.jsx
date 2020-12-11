@@ -53,7 +53,7 @@ export default class QueryBar extends React.Component {
 
         return (
             <div
-                className={classNames(className, styles.sxQueryBar, showCollapsed ? styles.withCollapse : '')}
+                className={classNames(className, styles.sxQueryBar, 'sx-query-bar', showCollapsed ? styles.withCollapse : '')}
                 {...others}
             >
                 {

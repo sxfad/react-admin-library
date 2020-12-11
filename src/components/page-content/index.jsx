@@ -99,7 +99,7 @@ export default class PageContent extends Component {
                 <div
                     ref={node => this.contentDom = node}
                     style={{ ...contentStyle, ...style }}
-                    className={`${className} ${styles.pageContent}`}
+                    className={`${className} ${styles.pageContent} sx-page-content`}
                     {...others}
                 >
                     {children}

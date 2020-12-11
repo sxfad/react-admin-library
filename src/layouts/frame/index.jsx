@@ -136,7 +136,7 @@ export default class FrameTopSideMenu extends Component {
             isMobile,
         } = layoutState;
 
-        let transitionDuration = sideDragging ? '0ms' : `300ms`;
+        let transitionDuration = sideDragging ? '0ms' : `0.3s`;
 
         if (isMobile) layout = PAGE_FRAME_LAYOUT.SIDE_MENU;
 

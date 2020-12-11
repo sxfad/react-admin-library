@@ -5,7 +5,7 @@
 @contentLeft: @sideWidth;
 @contentBottom: @footerHeight;
 @borderColor: #d9d9d9;
-@transitionDuration: 300ms;
+@transitionDuration: 0.3s;
 @pageHeadHeight: 45px;
 @pageTabsHeight: 35px;
 
@@ -72,7 +72,7 @@ body {
     width: 200px;
     box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
     background: #001529;
-    transition: all @transitionDuration;
+    transition: width @transitionDuration cubic-bezier(0.2, 0, 0, 1) 0s;
 
     .outer {
         position: absolute;
@@ -80,7 +80,7 @@ body {
         top: 0;
         bottom: 0;
         overflow: hidden;
-        transition: all @transitionDuration;
+        //transition: all @transitionDuration;
     }
 
     .inner {
@@ -88,7 +88,7 @@ body {
         height: 100%;
         overflow-x: visible;
         overflow-y: scroll;
-        transition: all @transitionDuration;
+        //transition: all @transitionDuration;
     }
 
     :global(.react-draggable) {

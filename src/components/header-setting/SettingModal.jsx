@@ -30,6 +30,7 @@ export default model({
             keepOtherMenuOpen,
             pageFrameLayout,
             defaultShowTabs,
+            theme,
         },
         action: { layout },
     } = props;
@@ -94,7 +95,7 @@ export default model({
                 </Card>
 
                 <Card title="菜单设置" style={cardStyle}>
-                    <div style={{ borderBottom: '1px solid #d9d9d9', paddingBottom: 8, marginBottom: 8 }}>
+                    <div style={{ borderBottom: `1px solid ${theme === 'dark' ? '#303030' : '#d9d9d9'}`, paddingBottom: 8, marginBottom: 8 }}>
                         <Checkbox
                             onChange={e => layout.setKeepOtherMenuOpen(e.target.checked)}
                             checked={keepOtherMenuOpen}

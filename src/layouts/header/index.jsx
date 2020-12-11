@@ -79,7 +79,7 @@ export default class Header extends Component {
             topMenus = menus;
         }
 
-        let transitionDuration = sideDragging ? '0ms' : '300ms';
+        let transitionDuration = sideDragging ? '0ms' : '0.3s';
 
         const theme = this.props.theme || ((isTopSideMenu || isSideMenu) ? 'default' : 'dark');
 

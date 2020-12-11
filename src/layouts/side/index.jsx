@@ -101,7 +101,7 @@ export default class Side extends Component {
         const sideInnerWidth = sideWidth + scrollBarWidth;
         const outerOverFlow = sideCollapsed ? 'visible' : 'hidden';
         const innerOverFlow = sideCollapsed ? 'visible' : '';
-        let transitionDuration = sideDragging ? '0ms' : `300ms`;
+        let transitionDuration = sideDragging ? '0ms' : `0.3s`;
 
         const isTopSideMenu = layout === PAGE_FRAME_LAYOUT.TOP_SIDE_MENU;
         const isSideMenu = layout === PAGE_FRAME_LAYOUT.SIDE_MENU;
@@ -131,7 +131,7 @@ export default class Side extends Component {
                     />
                 )}
 
-                <div className={styles.outer}
+                <div className={`${styles.outer} sx-side-outer`}
                      style={{
                          overflow: outerOverFlow,
                          transitionDuration,
@@ -139,7 +139,7 @@ export default class Side extends Component {
                      }}
                 >
                     <div
-                        className={styles.inner}
+                        className={`${styles.inner} sx-side-inner`}
                         ref={node => this.inner = node}
                         style={{
                             width: sideInnerWidth,
