@@ -27,7 +27,7 @@ export default class PageTabs extends Component {
         if (UN_LISTEN) UN_LISTEN();
 
         UN_LISTEN = this.props.history.listen((e) => {
-            this.setTabs();
+            setTimeout(() => this.setTabs());
         });
     }
 
@@ -220,7 +220,7 @@ export default class PageTabs extends Component {
         });
 
         return (
-            <div className={styles.root}>
+            <div className={`${styles.root} page-tabs-root`}>
                 <ContextMenu
                     visible={contextVisible}
                     onChange={(contextVisible) => this.setState({ contextVisible })}
