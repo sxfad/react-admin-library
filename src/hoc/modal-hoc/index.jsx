@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Modal } from 'antd';
+import React, {Component} from 'react';
+import {Modal} from 'antd';
 
 /**
  *  modal高级组件，确保每次弹框内部组件都是新创建的
@@ -23,7 +23,7 @@ export default (options) => WrappedComponent => {
         static displayName = `WithModal(${componentName})`;
 
         render() {
-            const { visible, onCancel, top = 100, style } = this.props;
+            const {visible, onCancel, top = 100, style} = this.props;
             let title;
 
             let others = {};
@@ -32,7 +32,7 @@ export default (options) => WrappedComponent => {
             if (typeof options === 'function') options = options(this.props);
 
             // options 如果为字符串，直接作为title
-            if (typeof options === 'string') title = options;
+            if (typeof options === 'string') options = {title: options};
 
             // options 如果为对象，获取title
             if (typeof options === 'object') {
@@ -43,9 +43,9 @@ export default (options) => WrappedComponent => {
             // 如果title为函数，返回值作为title
             if (typeof title === 'function') title = title(this.props);
 
-            const { fullScreen } = others;
+            const {fullScreen} = others;
 
-            let fstl = { top };
+            let fstl = {top};
             if (fullScreen) {
                 fstl = {
                     width: '100%',
@@ -64,7 +64,7 @@ export default (options) => WrappedComponent => {
                 <Modal
                     destroyOnClose
                     width="800px"
-                    bodyStyle={{ padding: 0 }}
+                    bodyStyle={{padding: 0}}
                     style={stl}
                     footer={null}
                     maskClosable={false}
