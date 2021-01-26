@@ -379,6 +379,8 @@ class FormElement extends Component {
         if (layout) {
             formLabel = formLabel || ' ';
             colon = colon === undefined ? false : colon;
+            labelCol = { flex: '0 0 0' };
+            wrapperStyle.flex = 0;
         } else {
             if (!children) {
                 children = getElement({ type, ...elementProps });
