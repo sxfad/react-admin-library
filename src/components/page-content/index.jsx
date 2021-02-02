@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Spin } from 'antd';
+import React, {Component} from 'react';
+import {Spin} from 'antd';
 import PropTypes from 'prop-types';
 import Footer from '../footer';
-import { getElementTop } from '../../util';
+import {getElementTop} from '../../util';
 import styles from './style.module.less';
 
 /**
@@ -42,13 +42,13 @@ export default class PageContent extends Component {
 
     setHeight = () => {
         if (!this.contentDom) return;
-        const { otherHeight } = this.props;
+        const {otherHeight} = this.props;
         const offsetTop = getElementTop(this.contentDom);
         const windowHeight = document.documentElement.clientHeight;
         const marginBottom = window.parseInt(window.getComputedStyle(this.contentDom)?.marginBottom, 10) || 0;
 
         const height = windowHeight - offsetTop - marginBottom - otherHeight;
-        this.setState({ height });
+        this.setState({height});
     };
 
     render() {
@@ -64,14 +64,14 @@ export default class PageContent extends Component {
             ...others
         } = this.props;
 
-        const { height } = this.state;
+        const {height} = this.state;
 
         let hasFixBottom = false;
         React.Children.map(children, item => {
             if (item && item.type && item.type.__FIX_BOTTOM) hasFixBottom = true;
         }, null);
 
-        const rootStyle = {};
+        const rootStyle = {width: '100%'};
         if (hasFixBottom) {
             rootStyle.marginBottom = '66px';
         }
@@ -102,7 +102,7 @@ export default class PageContent extends Component {
                 </div>
                 <div
                     ref={node => this.contentDom = node}
-                    style={{ ...contentStyle, ...style }}
+                    style={{...contentStyle, ...style}}
                     className={`${className} ${styles.pageContent} sx-page-content`}
                     {...others}
                 >
