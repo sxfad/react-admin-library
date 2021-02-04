@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { getElementTop } from '../util';
+import {useState, useEffect} from 'react';
+import {getElementTop} from '../util';
 
-export default function useHeight(domRef, otherHeight = 8) {
+export default function useHeight(domRef, otherHeight = 8, deps = []) {
 
-    const [ height, setHeight ] = useState(document.documentElement.clientHeight - otherHeight);
+    const [height, setHeight] = useState(document.documentElement.clientHeight - otherHeight);
 
     // 窗口大小改变事件
     const handleWindowResize = () => {
@@ -18,7 +18,7 @@ export default function useHeight(domRef, otherHeight = 8) {
         if (!domRef.current) return;
 
         handleWindowResize();
-    }, [ domRef.current ]);
+    }, [domRef.current, ...deps]);
 
     // 组件加载完成
     useEffect(() => {
@@ -29,5 +29,5 @@ export default function useHeight(domRef, otherHeight = 8) {
         };
     }, []);
 
-    return [ height, setHeight ];
+    return [height, setHeight];
 }
