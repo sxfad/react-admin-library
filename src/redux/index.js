@@ -1,8 +1,8 @@
-import { createAction, handleActions } from 'redux-actions';
-import { createStore, applyMiddleware, combineReducers, bindActionCreators } from 'redux';
-import { useSelector } from 'react-redux';
+import {createAction, handleActions} from 'redux-actions';
+import {createStore, applyMiddleware, combineReducers, bindActionCreators} from 'redux';
+import {useSelector} from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-import { identity } from 'lodash';
+import {identity} from 'lodash';
 import actionUtils from './action-utils';
 import checkAction from './check-action';
 import _handleAsyncReducer from './handle-async-reducer';
@@ -26,11 +26,11 @@ export const actionTypes = _actionTypes;
 export const handleAsyncReducer = _handleAsyncReducer;
 
 export default function model(options) {
-    const { models, storage, handleError, handleSuccess, middlewares = [] } = options;
+    const {models, storage, handleError, handleSuccess, middlewares = []} = options;
 
-    modelExt({ storage, handleError, handleSuccess });
+    modelExt({storage, handleError, handleSuccess});
 
-    const { actions, reducers } = getActionsAndReducers({ models });
+    const {actions, reducers} = getActionsAndReducers({models});
     const middleware = [
         thunkMiddleware,
         middlewarePromise,
@@ -41,7 +41,7 @@ export default function model(options) {
     ];
 
     const _store = configureStore();
-    const { dispatch } = _store;
+    const {dispatch} = _store;
 
     const _action = bindActionCreators(actions, dispatch);
     Object.keys(actions).forEach(key => {
@@ -64,7 +64,7 @@ export default function model(options) {
     }
 
     // 与redux进行连接 函数
-    const connectComponent = _connect({ actions, options: { ref: true } });
+    const connectComponent = _connect({actions, options: {ref: true}});
 
     // 与redux进行连接 装饰器
     const connect = createConnectHOC(connectComponent);
@@ -90,14 +90,14 @@ export default function model(options) {
  * @param models
  * @returns {{actions, reducers: {pageState}}}
  */
-export function getActionsAndReducers({ models }) {
+export function getActionsAndReducers({models}) {
     const syncKeys = Object.keys(models).filter(key => {
-        const { syncStorage } = models[key];
+        const {syncStorage} = models[key];
         return !!syncStorage;
     });
 
-    const utils = actionUtils({ syncKeys });
-    let _actions = checkAction({ utils });
+    const utils = actionUtils({syncKeys});
+    let _actions = checkAction({utils});
     let _reducers = {};
 
     Object.keys(models).forEach(modelName => {
@@ -117,7 +117,7 @@ export function getActionsAndReducers({ models }) {
         // 除去'initialState', 'syncStorage', 'actions', 'reducers'等约定属性，其他都视为actions与reducers合并写法
         const ar = {};
         Object.keys(model).forEach(item => {
-            if ([ 'initialState', 'syncStorage', 'actions', 'reducers' ].indexOf(item) === -1) {
+            if (['initialState', 'syncStorage', 'actions', 'reducers'].indexOf(item) === -1) {
                 ar[item] = model[item];
             }
         });
@@ -134,11 +134,11 @@ export function getActionsAndReducers({ models }) {
                 arActions[actionName] = createAction(type);
                 // arReducers[type] = arValue;
                 arReducers[type] = (state, action) => {
-                    const { payload } = action;
+                    const {payload} = action;
                     return arValue(payload, state, action);
                 };
             } else { // ar 对象写法
-                let { payload = identity, meta, reducer = (state) => ({ ...state }) } = arValue;
+                let {payload = identity, meta, reducer = (state) => ({...state})} = arValue;
 
                 // 处理meta默认值
                 if (!meta) {
@@ -162,8 +162,8 @@ export function getActionsAndReducers({ models }) {
 
         });
 
-        reducers = { ...reducers, ...arReducers };
-        actions = { ...actions, ...arActions };
+        reducers = {...reducers, ...arReducers};
+        actions = {...actions, ...arActions};
 
         // 处理reducer
         const __reducers = {};
@@ -222,9 +222,11 @@ export function getActionsAndReducers({ models }) {
             // 从 store中恢复数据的reducer 如果为定义，使用默认reducers
             if (!__reducers[actionTypes.GET_STATE_FROM_STORAGE]) {
                 __reducers[actionTypes.GET_STATE_FROM_STORAGE] = (state, action) => {
-                    const { payload = {} } = action;
+                    const {payload = {}} = action;
                     // state 为当前模块的初始化数据，data为当前模块存储的数据
-                    const data = payload[modelName] || {};
+                    const data = payload[modelName];
+
+                    if (!data) return state;
 
                     // 深层结构的数据，会导致默认值失效，要使用递归，精确赋值
                     return setObjectByObject(state, data);

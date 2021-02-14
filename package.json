@@ -1,6 +1,6 @@
 {
     "name": "ra-lib",
-    "version": "1.2.12",
+    "version": "1.2.15",
     "license": "MIT",
     "main": "./dist/index.esm.js",
     "files": [
