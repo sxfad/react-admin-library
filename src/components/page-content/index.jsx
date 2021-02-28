@@ -61,6 +61,7 @@ export default class PageContent extends Component {
             className,
             fitHeight,
             style,
+            otherHeight,
             ...others
         } = this.props;
 
