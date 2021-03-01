@@ -1,0 +1,26 @@
+.buttonTextInput {
+    padding-right: 111px;
+}
+
+.buttonText {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-weight: 400;
+    color: #979797;
+    z-index: 99;
+
+    &:hover {
+        background: none;
+    }
+
+    & > span:before {
+        position: absolute;
+        content: '';
+        border-left: 1px solid #d8d8d8;
+        top: 6px;
+        bottom: 6px;
+        left: 0;
+    }
+}

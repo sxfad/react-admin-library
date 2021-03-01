@@ -26,3 +26,5 @@ export HeaderUser from './header-user';
 export FullScreen from './full-screen';
 export HeaderSetting from './header-setting';
 export Copy from './copy';
+export ImageCode from './image-code';
+export MessageCode from './message-code';
