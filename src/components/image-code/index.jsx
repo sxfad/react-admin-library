@@ -13,6 +13,7 @@ ImageCode.propTypes = {
     src: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     placeholder: PropTypes.string,
     errorImage: PropTypes.string,
+    refresh: PropTypes.any, // 刷新验证码，传递一个与之前不同的值即可
 };
 ImageCode.defaultProps = {
     placeholder: '请输入图片验证码',
@@ -27,6 +28,7 @@ function ImageCode(props) {
         onChange,
         value,
         errorImage,
+        refresh,
         ...others
     } = props;
 
@@ -89,7 +91,7 @@ function ImageCode(props) {
         (async () => {
             await handleClick();
         })();
-    }, []);
+    }, [refresh]);
     return (
         <Spin spinning={loading} size="small">
             <div style={{display: 'flex', position: 'relative'}}>
