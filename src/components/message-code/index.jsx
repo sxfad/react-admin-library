@@ -14,6 +14,8 @@ MessageCode.propTypes = {
     buttonProps: PropTypes.object,
 };
 MessageCode.defaultProps = {
+    time: 60,
+    buttonType: 'default',
     wrapperProps: {},
     buttonProps: {},
     placeholder: '请输入短信验证码',
@@ -23,8 +25,8 @@ export default MessageCode;
 
 function MessageCode(props) {
     const {
-        time = 60,
-        buttonType = 'default',
+        time,
+        buttonType,
         onSend,
         wrapperProps,
         buttonProps,

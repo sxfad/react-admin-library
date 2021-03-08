@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './index.css';
 
 export default class ToolBar extends Component {
@@ -12,14 +13,16 @@ export default class ToolBar extends Component {
     };
 
     render() {
-        const { style = {}, right, children, ...others } = this.props;
+        const {style = {}, right, children, className, ...others} = this.props;
 
         if (right && !style.justifyContent) {
             style.justifyContent = 'flex-end';
         }
 
+        const cls = classNames('tool-bar-root', className);
+
         return (
-            <div className="tool-bar-root" style={style} {...others}>
+            <div className={cls} style={style} {...others}>
                 {children}
             </div>
         );
