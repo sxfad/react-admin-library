@@ -154,7 +154,7 @@ export default class PageTabs extends Component {
         if (action === 'close') this.handleClose(targetPath);
 
         if (action === 'closeOthers') {
-            const tab = tabs.find(item => item.path = targetPath);
+            const tab = tabs.find(item => item.path === targetPath);
             const prevActiveTab = tabs.find(item => item.active);
             tab.active = true;
 
