@@ -8,7 +8,7 @@
     ],
     "scripts": {
         "build": "father build",
-        "build:cp": "yarn build && cp -r ./dist ../react-admin/node_modules/ra-lib",
+        "build:cp": "yarn build && cp -r ./dist ../node_modules/ra-lib",
         "test": "father test",
         "test:coverage": "father test --coverage",
         "dumi:dev": "dumi dev"

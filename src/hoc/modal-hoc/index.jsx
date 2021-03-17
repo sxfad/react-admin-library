@@ -43,15 +43,16 @@ export default (options) => WrappedComponent => {
             // 如果title为函数，返回值作为title
             if (typeof title === 'function') title = title(this.props);
 
-            const {fullScreen} = others;
+            let {fullScreen, width=800} = others;
 
             let fstl = {top};
             if (fullScreen) {
+                width = '100%';
                 fstl = {
-                    width: '100%',
-                    height: '100%',
                     top: 0,
-                    paddingBottom: 0,
+                    maxWidth: '100%',
+                    margin: 0,
+                    padding: 0,
                 };
             }
 
@@ -63,7 +64,7 @@ export default (options) => WrappedComponent => {
             return (
                 <Modal
                     destroyOnClose
-                    width="800px"
+                    width={width}
                     bodyStyle={{padding: 0}}
                     style={stl}
                     footer={null}

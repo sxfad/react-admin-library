@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Spin, ConfigProvider } from 'antd';
+import React, {Component} from 'react';
+import {Button, Spin, ConfigProvider} from 'antd';
 import PropTypes from 'prop-types';
 import * as util from '../../util';
 
@@ -14,6 +14,7 @@ export default class ModalContent extends Component {
     };
 
     static propTypes = {
+        fullScreen: PropTypes.bool,
         surplusSpace: PropTypes.bool,   // 是否使用屏幕剩余空间
         otherHeight: PropTypes.number,  // 除了主体内容之外的其他高度，用于计算主体高度；
         loading: PropTypes.bool,        // 是否加载中
@@ -45,24 +46,26 @@ export default class ModalContent extends Component {
     };
 
     componentDidMount() {
-        const { surplusSpace } = this.props;
+        let {surplusSpace, fullScreen} = this.props;
 
-        if (surplusSpace) {
+        if (surplusSpace || fullScreen) {
             this.handleWindowResize();
             window.addEventListener('resize', this.handleWindowResize);
         }
     }
 
     componentWillUnmount() {
-        const { surplusSpace } = this.props;
+        const {surplusSpace, fullScreen} = this.props;
 
-        if (surplusSpace) window.removeEventListener('resize', this.handleWindowResize);
+        if (surplusSpace || fullScreen) window.removeEventListener('resize', this.handleWindowResize);
     }
 
     handleWindowResize = () => {
         const prefixCls = this.context.getPrefixCls();
 
-        let { otherHeight } = this.props;
+        let {otherHeight, fullScreen} = this.props;
+        if (fullScreen && otherHeight === undefined) otherHeight = 55;
+
         const windowHeight = document.documentElement.clientHeight;
         if (!otherHeight) {
             const top = util.getElementTop(this.wrapper);
@@ -80,12 +83,13 @@ export default class ModalContent extends Component {
         }
         const height = windowHeight - otherHeight;
 
-        this.setState({ height });
+        this.setState({height});
     };
 
     render() {
         const {
             surplusSpace,
+            fullScreen,
             loading,
             loadingTip,
             otherHeight,
@@ -102,24 +106,24 @@ export default class ModalContent extends Component {
             children,
             ...others
         } = this.props;
-        const { height } = this.state;
+        const {height} = this.state;
         const prefixCls = this.context.getPrefixCls();
         return (
             <Spin spinning={loading} tip={loadingTip}>
                 <div
                     className="modal-content"
                     ref={node => this.wrapper = node}
-                    style={{ display: 'flex', flexDirection: 'column', height, ...style }}
+                    style={{display: 'flex', flexDirection: 'column', height, ...style}}
                     {...others}
                 >
                     <div
                         className="modal-content-inner"
-                        style={{ flex: 1, padding: 16, overflow: surplusSpace ? 'auto' : '', ...bodyStyle }}
+                        style={{flex: 1, padding: 16, overflow: (surplusSpace || fullScreen) ? 'auto' : '', ...bodyStyle}}
                     >
                         {children}
                     </div>
                     {footer !== false ? (
-                        <div className={`${prefixCls}-modal-footer`} style={{ flex: 0 }}>
+                        <div className={`${prefixCls}-modal-footer`} style={{flex: 0}}>
                             {footer ? footer : (
                                 <>
                                     <Button type="primary" onClick={onOk} htmlType={okHtmlType}>{okText}</Button>
