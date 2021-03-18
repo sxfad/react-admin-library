@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Pagination } from 'antd';
+import {Pagination} from 'antd';
 import './index.css';
 
 /**
@@ -17,6 +17,7 @@ export default class PaginationComponent extends Component {
         total: PropTypes.number,
         onPageNumChange: PropTypes.func,
         onPageSizeChange: PropTypes.func,
+        onChange: PropTypes.func,
     };
 
     static defaultProps = {
@@ -29,6 +30,7 @@ export default class PaginationComponent extends Component {
         total: 0,
         onPageNumChange: () => void 0,
         onPageSizeChange: () => void 0,
+        onChange: () => void 0,
     };
 
     render() {
@@ -42,6 +44,7 @@ export default class PaginationComponent extends Component {
             total,
             onPageNumChange,
             onPageSizeChange,
+            onChange,
         } = this.props;
 
         const props = {};
@@ -55,16 +58,22 @@ export default class PaginationComponent extends Component {
         const totalPage = Math.ceil(total / pageSize);
         let style = this.props.style;
         if (total <= 0) {
-            style = {/* display: 'none', */ ...style };
+            style = {/* display: 'none', */ ...style};
         }
         return (
             <div className="pagination-wrap" style={style}>
                 <Pagination
                     {...props}
                     size={size}
-                    pageSizeOptions={[ '10', '15', '20', '30', '50', '100' ]}
+                    pageSizeOptions={['10', '15', '20', '30', '50', '100']}
                     onShowSizeChange={(num, size) => onPageSizeChange(size)}
-                    onChange={(num) => onPageNumChange(num)}
+                    onChange={(num, size) => {
+                        // onShowSizeChange 改变时，不触发 onPageNumChange
+                        if (size === this.props.pageSize) {
+                            onPageNumChange(num, size);
+                        }
+                        onChange(num, size);
+                    }}
                     defaultCurrent={1}
                     pageSize={pageSize}
                     current={pageNum}
