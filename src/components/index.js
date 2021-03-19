@@ -13,6 +13,7 @@ export Icon from './icon';
 export AsyncSelect from './async-select';
 export FormElement from './form-element';
 export FormItem from './form/FormItem';
+export {formElementTypes} from './form/util';
 export {isInputLikeElement} from './form/util';
 export FormRow from './form-row';
 export IconPicker from './icon-picker';

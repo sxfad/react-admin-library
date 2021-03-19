@@ -18,23 +18,159 @@ import MessageCode from '../message-code';
 import ImageCode from '../image-code';
 
 
+export const formElementTypes = [
+    {
+        type: 'image-code',
+        Component: ImageCode,
+        isInputLike: true,
+        componentName: 'ImageCode',
+    },
+    {
+        type: 'message-code',
+        Component: MessageCode,
+        isInputLike: true,
+        componentName: 'MessageCode',
+    },
+    {
+        type: 'input',
+        Component: Input,
+        isInputLike: true,
+        componentName: 'Input',
+    },
+    {
+        type: 'hidden',
+        Component: Input,
+        isInputLike: true,
+    },
+    {
+        type: 'number',
+        Component: InputNumber,
+        isInputLike: true,
+        componentName: 'InputNumber',
+    },
+    {
+        type: 'textarea',
+        Component: Input.TextArea,
+        isInputLike: true,
+        componentName: 'Input.TextArea',
+    },
+    {
+        type: 'password',
+        Component: Input.Password,
+        isInputLike: true,
+        componentName: 'Input.Password',
+    },
+    {
+        type: 'mobile',
+        Component: Input,
+        isInputLike: true,
+        componentName: 'Input',
+    },
+    {
+        type: 'email',
+        Component: Input,
+        isInputLike: true,
+        componentName: 'Input',
+    },
+    {
+        type: 'select',
+        Component: Select,
+        componentName: 'Select',
+    },
+    {
+        type: 'select-tree',
+        getComponent: ({commonProps, props}) => {
+            return (
+                <TreeSelect {...commonProps} {...props} treeData={props.treeData || props.options}/>
+            );
+        },
+        componentName: 'TreeSelect',
+    },
+    {
+        type: 'checkbox',
+        Component: Checkbox,
+        componentName: 'Checkbox',
+    },
+    {
+        type: 'checkbox-group',
+        Component: Checkbox.Group,
+        componentName: 'Checkbox.Group',
+    },
+    {
+        type: 'radio',
+        Component: Radio,
+        componentName: 'Radio',
+    },
+    {
+        type: 'radio-button',
+        getComponent: ({commonProps, props}) => {
+            const {options = [], ...others} = props;
+            return (
+                <Radio.Group buttonStyle="solid" {...commonProps} {...others}>
+                    {options.map(opt => <Radio.Button key={opt.value} {...opt}>{opt.label}</Radio.Button>)}
+                </Radio.Group>
+            );
+        },
+        componentName: 'Radio.Group',
+    },
+    {
+        type: 'radio-group',
+        Component: Radio.Group,
+        componentName: 'Radio.Group',
+    },
+    {
+        type: 'switch',
+        Component: Switch,
+        componentName: 'Switch',
+    },
+    {
+        type: 'date',
+        Component: DatePicker,
+        componentName: 'DatePicker',
+    },
+    {
+        type: 'time',
+        Component: TimePicker,
+        componentName: 'TimePicker',
+    },
+    {
+        type: 'date-time',
+        getComponent: ({commonProps, props}) => {
+            return <DatePicker {...commonProps} showTime {...props}/>;
+        },
+        componentName: 'DatePicker',
+    },
+    {
+        type: 'date-range',
+        Component: DatePicker.RangePicker,
+        componentName: 'DatePicker.RangePicker',
+    },
+    {
+        type: 'cascader',
+        Component: Cascader,
+        componentName: 'Cascader',
+    },
+    {
+        type: 'transfer',
+        Component: Transfer,
+        componentName: 'Transfer',
+    },
+    {
+        type: 'icon-picker',
+        Component: IconPicker,
+        componentName: 'IconPicker',
+    },
+];
+
 /**
  * 类似 input 元素
  * @param type
  * @returns {boolean}
  */
 export function isInputLikeElement(type) {
-    return [
-        'input',
-        'hidden',
-        'number',
-        'textarea',
-        'password',
-        'mobile',
-        'email',
-        'image-code',
-        'message-code',
-    ].includes(type);
+    const types = formElementTypes.filter(item => item.isInputLike).map(item => item.type);
+
+    return types.includes(type);
 }
 
 export function getPlaceholder({type, placeholder, label}) {
@@ -79,118 +215,6 @@ export function getRules(options) {
     return rules;
 }
 
-const types = [
-    {
-        type: 'image-code',
-        Component: ImageCode,
-    },
-    {
-        type: 'message-code',
-        Component: MessageCode,
-    },
-    {
-        type: 'input',
-        Component: Input,
-    },
-    {
-        type: 'hidden',
-        Component: Input,
-    },
-    {
-        type: 'number',
-        Component: InputNumber,
-    },
-    {
-        type: 'textarea',
-        Component: Input.TextArea,
-    },
-    {
-        type: 'password',
-        Component: Input.Password,
-    },
-    {
-        type: 'mobile',
-        Component: Input,
-    },
-    {
-        type: 'email',
-        Component: Input,
-    },
-    {
-        type: 'select',
-        Component: Select,
-    },
-    {
-        type: 'select-tree',
-        getComponent: ({commonProps, props}) => {
-            return (
-                <TreeSelect {...commonProps} {...props} treeData={props.treeData || props.options}/>
-            );
-        },
-    },
-    {
-        type: 'checkbox',
-        Component: Checkbox,
-    },
-    {
-        type: 'checkbox-group',
-        Component: Checkbox.Group,
-    },
-    {
-        type: 'radio',
-        Component: Radio,
-    },
-    {
-        type: 'radio-button',
-        getComponent: ({commonProps, props}) => {
-            const {options = [], ...others} = props;
-            return (
-                <Radio.Group buttonStyle="solid" {...commonProps} {...others}>
-                    {options.map(opt => <Radio.Button key={opt.value} {...opt}>{opt.label}</Radio.Button>)}
-                </Radio.Group>
-            );
-        },
-    },
-    {
-        type: 'radio-group',
-        Component: Radio.Group,
-    },
-    {
-        type: 'switch',
-        Component: Switch,
-    },
-    {
-        type: 'date',
-        Component: DatePicker,
-    },
-    {
-        type: 'time',
-        Component: TimePicker,
-    },
-    {
-        type: 'date-time',
-        getComponent: ({commonProps, props}) => {
-            return <DatePicker {...commonProps} showTime {...props}/>;
-        },
-    },
-    {
-        type: 'date-range',
-        Component: DatePicker.RangePicker,
-    },
-    {
-        type: 'cascader',
-        Component: Cascader,
-    },
-    {
-        type: 'transfer',
-        Component: Transfer,
-    },
-    {
-        type: 'icon-picker',
-        Component: IconPicker,
-    },
-];
-
 export function getFormElement(options) {
     const {type = 'input', component, children, ...props} = options;
 
@@ -209,7 +233,7 @@ export function getFormElement(options) {
     // 如果 children 存在，直接返回children
     if (children) return children;
 
-    const typeItem = types.find(item => item.type === type);
+    const typeItem = formElementTypes.find(item => item.type === type);
 
     if (!typeItem) throw new Error(`no such type: ${type}`);
 
