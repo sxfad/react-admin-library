@@ -1,10 +1,10 @@
-import { cloneDeep } from 'lodash';
-import { pathToRegexp } from 'path-to-regexp';
+import {cloneDeep} from 'lodash';
+import {pathToRegexp} from 'path-to-regexp';
 import * as tree from './tree';
 
 const ROUTE_BASE_NAME = process.env.BASE_NAME || '';
 
-const { getNodeByPropertyAndValue, convertToTree } = tree;
+const {getNodeByPropertyAndValue, convertToTree} = tree;
 
 export const isMobile = document.body.clientWidth < 575;
 
@@ -60,7 +60,7 @@ export function getMenuTreeDataAndPermissions(menus) {
     const setBasePath = (node, basePath) => {
         if (!basePath) return;
 
-        const { path, url } = node;
+        const {path, url} = node;
 
         if (basePath.endsWith('/')) {
             basePath = basePath.substr(0, basePath.length - 1);
@@ -82,7 +82,7 @@ export function getMenuTreeDataAndPermissions(menus) {
 
     const loop = (nodes, basePath) => {
         nodes.forEach(item => {
-            const { key } = item;
+            const {key} = item;
             const children = menus.filter(it => it.parentKey === key);
 
             setBasePath(item, basePath);
@@ -94,7 +94,7 @@ export function getMenuTreeDataAndPermissions(menus) {
     };
 
     menus.forEach(top => {
-        const { basePath, key } = top;
+        const {basePath, key} = top;
         const children = menus.filter(it => it.parentKey === key);
 
         if (!basePath) return;
@@ -115,7 +115,7 @@ export function getMenuTreeDataAndPermissions(menus) {
     });
 
     // 菜单根据order 排序
-    const orderedData = [ ...menus ].sort((a, b) => {
+    const orderedData = [...menus].sort((a, b) => {
         const aOrder = a.order || 0;
         const bOrder = b.order || 0;
 
@@ -151,7 +151,7 @@ export function getMenuTreeDataAndPermissions(menus) {
     });
 
     const menuTreeData = convertToTree(orderedData);
-    return { menuTreeData, permissions };
+    return {menuTreeData, permissions};
 }
 
 
@@ -387,7 +387,7 @@ export function removeClass(selector, className) {
         doms = document.querySelectorAll(selector);
     }
     if (!doms || !doms.length) return;
-    if (!doms.length) doms = [ doms ];
+    if (!doms.length) doms = [doms];
     doms.forEach(dom => {
         let domClass = dom.className;
         if (domClass) {
@@ -409,7 +409,7 @@ export function addClass(selector, className) {
         doms = document.querySelectorAll(selector);
     }
     if (!doms || !doms.length) return;
-    if (!doms.length) doms = [ doms ];
+    if (!doms.length) doms = [doms];
     doms.forEach(dom => {
         let domClass = dom.className;
         if (domClass) {
@@ -509,7 +509,7 @@ export function arrayRemoveAll(arr, items) {
 export function arrayPush(array, item) {
     if (!array || !Array.isArray(array)) return array;
 
-    const arr = [ ...array ];
+    const arr = [...array];
     if (!arr.includes(item)) arr.push(item);
 
     return arr;
@@ -653,7 +653,7 @@ export function getWindowSize() {
     const g = d.getElementsByTagName('body')[0];
     const width = w.innerWidth || e.clientWidth || g.clientWidth;
     const height = w.innerHeight || e.clientHeight || g.clientHeight;
-    return { width, height };
+    return {width, height};
 }
 
 /**
@@ -702,8 +702,8 @@ export function removeEventListener(element, type, handler) {
  * @type String
  */
 export function formatCurrency(num, options = {}) {
-    let { decimalNum, splitSymbol } = options;
-    const { prefix = '￥' } = options;
+    let {decimalNum, splitSymbol} = options;
+    const {prefix = '￥'} = options;
     let centsPercent = 100;
     if (splitSymbol === undefined) splitSymbol = ',';
     if (decimalNum !== 0 && decimalNum !== 1 && decimalNum !== 2) decimalNum = 2;

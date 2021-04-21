@@ -27,9 +27,9 @@ export default class Side extends Component {
         this.scrollMenu();
     }
 
-    componentDidUpdate(prevProps) {
-        this.scrollMenu(prevProps);
-    }
+    // componentDidUpdate(prevProps) {
+    //     this.scrollMenu(prevProps);
+    // }
 
     scrollMenu = (prevProps = {}) => {
         const prefixCls = this.context.getPrefixCls();
