@@ -1,4 +1,4 @@
-import { getSelectedMenuByPath, isMobile } from '../util';
+import {getSelectedMenuByPath, isMobile} from '../util';
 import * as tree from '../util/tree';
 import * as util from '../util/index';
 
@@ -10,6 +10,8 @@ export const PAGE_FRAME_LAYOUT = {
 
 // 进行本地存储同步，syncState中的同步是区分用户的，会导致未登录的页面与登录后的页面有差异
 const setItem = (key, value) => window.localStorage.setItem(key, value);
+
+const persistTab = process.env.REACT_APP_PERSIST_TAB !== 'false';
 
 const INIT_WIDTH = 256;
 
@@ -68,7 +70,7 @@ export default {
         keepOtherMenuOpen: true,
 
         keepAlive: true,
-        tabs: [ { path: true, text: true, icon: true, active: true, scrollTop: true } ],
+        tabs: persistTab ? [{path: true, text: true, icon: true, active: true, scrollTop: true}] : false,
 
         pageFrameLayout: true,
         showTabs: true,
@@ -79,90 +81,90 @@ export default {
         defaultShowTabs: true,
     },
 
-    setAntdPrefixCls: antdPrefixCls => ({ antdPrefixCls }),
+    setAntdPrefixCls: antdPrefixCls => ({antdPrefixCls}),
 
-    setDefaultShowSide: defaultShowSide => ({ defaultShowSide }),
+    setDefaultShowSide: defaultShowSide => ({defaultShowSide}),
     setShowSideToDefault: (arg, state) => {
         let sideCurrentWidth = state.sideCollapsed ? state.sideCollapsedWidth : state.sideWidth;
         sideCurrentWidth = state.defaultShowSide ? sideCurrentWidth : 0;
 
-        return { showSide: state.defaultShowSide, sideCurrentWidth };
+        return {showSide: state.defaultShowSide, sideCurrentWidth};
     },
 
-    setDefaultShowHead: defaultShowHead => ({ defaultShowHead }),
+    setDefaultShowHead: defaultShowHead => ({defaultShowHead}),
     setShowHeadToDefault: (arg, state) => {
-        return { showHead: state.defaultShowHead };
+        return {showHead: state.defaultShowHead};
     },
 
-    setDefaultHeadFixed: defaultHeadFixed => ({ defaultHeadFixed }),
+    setDefaultHeadFixed: defaultHeadFixed => ({defaultHeadFixed}),
     setHeadFixedToDefault: (arg, state) => {
-        return { headFixed: state.defaultHeadFixed };
+        return {headFixed: state.defaultHeadFixed};
     },
 
-    setDefaultShowTabs: defaultShowTabs => ({ defaultShowTabs }),
+    setDefaultShowTabs: defaultShowTabs => ({defaultShowTabs}),
     setShowTabsToDefault: (arg, state) => {
-        return { showTabs: state.defaultShowTabs };
+        return {showTabs: state.defaultShowTabs};
     },
 
-    setHeadFixed: headFixed => ({ headFixed }),
+    setHeadFixed: headFixed => ({headFixed}),
 
-    showHead: () => ({ showHead: true }),
-    hideHead: () => ({ showHead: false }),
+    showHead: () => ({showHead: true}),
+    hideHead: () => ({showHead: false}),
 
-    setTitle: (title) => ({ title }),
+    setTitle: (title) => ({title}),
 
-    setBreadcrumbs: (breadcrumbs) => ({ breadcrumbs }),
+    setBreadcrumbs: (breadcrumbs) => ({breadcrumbs}),
     appendBreadcrumbs: (appendBreadcrumbs, state) => {
-        let { breadcrumbs = [] } = state;
+        let {breadcrumbs = []} = state;
         breadcrumbs = breadcrumbs.concat(appendBreadcrumbs);
-        return { breadcrumbs };
+        return {breadcrumbs};
     },
 
-    showLoading: (loadingTip) => ({ loading: true, loadingTip }),
-    hideLoading: () => ({ loading: false, loadingTip: '' }),
+    showLoading: (loadingTip) => ({loading: true, loadingTip}),
+    hideLoading: () => ({loading: false, loadingTip: ''}),
 
-    setSideDragging: (sideDragging) => ({ sideDragging }),
+    setSideDragging: (sideDragging) => ({sideDragging}),
     hideSide: () => {
         // 如果是手机，让隐藏函数失效
         if (isMobile) {
-            return { showSide: true };
+            return {showSide: true};
         }
 
-        return { showSide: false, sideCurrentWidth: 0 };
+        return {showSide: false, sideCurrentWidth: 0};
     },
     showSide: (args, state) => {
         const sideCurrentWidth = state.sideCollapsed ? state.sideCollapsedWidth : state.sideWidth;
 
-        return ({ showSide: true, sideCurrentWidth });
+        return ({showSide: true, sideCurrentWidth});
     },
     setSideWidth: (sideWidth, state) => {
         let sideCurrentWidth = state.sideCollapsed ? state.sideCollapsedWidth : sideWidth;
         if (!state.showSide) sideCurrentWidth = 0;
 
-        return { sideWidth, sideCurrentWidth };
+        return {sideWidth, sideCurrentWidth};
     },
     initSideWidth: (args, state) => {
         let sideCurrentWidth = state.sideCollapsed ? state.sideCollapsedWidth : INIT_WIDTH;
         if (!state.showSide) sideCurrentWidth = 0;
 
-        return { sideWidth: INIT_WIDTH, sideCurrentWidth };
+        return {sideWidth: INIT_WIDTH, sideCurrentWidth};
     },
     setSideCollapsed: (sideCollapsed, state) => {
         let sideCurrentWidth = sideCollapsed ? state.sideCollapsedWidth : state.sideWidth;
         if (!state.showSide) sideCurrentWidth = 0;
 
-        return { sideCollapsed, sideCurrentWidth };
+        return {sideCollapsed, sideCurrentWidth};
     },
 
-    setKeepOtherMenuOpen: (keepOtherMenuOpen) => ({ keepOtherMenuOpen }),
-    setOpenKeys: (openKeys) => ({ openKeys }),
-    setMenus: (menus) => ({ menus }),
-    setPlainMenus: (plainMenus) => ({ plainMenus }),
+    setKeepOtherMenuOpen: (keepOtherMenuOpen) => ({keepOtherMenuOpen}),
+    setOpenKeys: (openKeys) => ({openKeys}),
+    setMenus: (menus) => ({menus}),
+    setPlainMenus: (plainMenus) => ({plainMenus}),
     getMenuStatus: (arg, state) => {
         const path = window.location.pathname;
-        const { keepOtherMenuOpen } = state;
+        const {keepOtherMenuOpen} = state;
 
-        let openKeys = [ ...state.openKeys ];
+        let openKeys = [...state.openKeys];
         let selectedMenu = getSelectedMenuByPath(path, state.menus);
         let topMenu = {};
 
@@ -175,7 +177,7 @@ export default {
             topMenu = tree.getTopNodeByNode(state.menus, selectedMenu);
             const parentKeys = selectedMenu.parentKeys || [];
 
-            openKeys = keepOtherMenuOpen ? openKeys.concat(parentKeys) : [ ...parentKeys ];
+            openKeys = keepOtherMenuOpen ? openKeys.concat(parentKeys) : [...parentKeys];
 
             openKeys = util.uniqueArray(openKeys);
         }
@@ -187,12 +189,12 @@ export default {
         };
     },
 
-    setKeepPage: keepAlive => ({ keepAlive }),
+    setKeepPage: keepAlive => ({keepAlive}),
 
-    showTabs: showTabs => ({ showTabs }),
-    setTabs: tabs => ({ tabs }),
+    showTabs: showTabs => ({showTabs}),
+    setTabs: tabs => ({tabs}),
     setCurrentTabTitle: (title, state) => {
-        const tabs = [ ...state.tabs ];
+        const tabs = [...state.tabs];
         const tab = tabs.find(item => item.active);
 
         if (tab) {
@@ -206,19 +208,19 @@ export default {
             }
         }
 
-        return { tabs };
+        return {tabs};
     },
 
     setPrimaryColor: (primaryColor) => {
         setItem('primaryColor', primaryColor);
 
-        return { primaryColor };
+        return {primaryColor};
     },
 
-    setAppName: appName => ({ appName }),
-    setLoginUser: (loginUser) => ({ loginUser }),
-    setPermissions: (permissions) => ({ permissions }),
-    setUserPaths: userPaths => ({ userPaths }),
+    setAppName: appName => ({appName}),
+    setLoginUser: (loginUser) => ({loginUser}),
+    setPermissions: (permissions) => ({permissions}),
+    setUserPaths: userPaths => ({userPaths}),
     setPageFrameLayout: (pageFrameLayout, state) => {
         let sideCurrentWidth = state.sideCollapsed ? state.sideCollapsedWidth : state.sideWidth;
 
@@ -228,6 +230,6 @@ export default {
             defaultShowSide = false;
         }
 
-        return { pageFrameLayout, sideCurrentWidth, defaultShowSide };
+        return {pageFrameLayout, sideCurrentWidth, defaultShowSide};
     },
 };
