@@ -115,7 +115,7 @@ export default (
                     layout.setTitle(nextTitle);
 
                     // 刷新时候，由于设置顺序问题，需要timeout
-                    setTimeout(() => layout.setCurrentTabTitle(nextTitle));
+                    setTimeout(() => layout.setCurrentTabTitle(nextTitle), 100);
                 }
 
                 // 页面面包屑导航
