@@ -35,12 +35,14 @@ export default class SXAjax {
      * @param onShowSuccessTip 如何显示成功提示
      * @param isMock 区分哪些请求需要mock，比如：url以约定'/mock'开头的请求，使用mock等方式。
      * @param reject 出错是否进行reject 默认true
+     * @param deleteUseBody delete请求，是否已body发送请求
      */
     constructor({
                     onShowSuccessTip = (/* response, successTip  */) => true,
                     onShowErrorTip = (/* err, errorTip */) => true,
                     isMock = (/* url, data, method, options */) => false,
                     reject = true,
+                    deleteUseBody = false,
                 } = {}) {
         this.instance = axios.create();
         this.mockInstance = axios.create();
@@ -53,6 +55,7 @@ export default class SXAjax {
         this.onShowErrorTip = onShowErrorTip;
         this.isMock = isMock;
         this.reject = reject;
+        this.deleteUseBody = deleteUseBody;
     }
 
     setDefaultOption(instance) {
@@ -151,7 +154,7 @@ export default class SXAjax {
         }
 
         let params = {};
-        if (isGet || isDelete) {
+        if (isGet || (isDelete && !this.deleteUseBody)) {
             params = data; // params 是get或delete请求拼接到url上的
             data = {}; // data 是put、post 等请求发送的数据
         }
